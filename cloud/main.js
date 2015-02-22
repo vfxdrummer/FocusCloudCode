@@ -34,7 +34,7 @@ Parse.Cloud.define("", function(request, response) {
 });
 
 // say hello
-Parse.Cloud.define("hello", function(request, response) {
+Parse.Cloud.define("helloTwiML", function(request, response) {
   var twilio = require('twilio');
   var resp = new twilio.TwimlResponse();
   resp.say('Hello!');
