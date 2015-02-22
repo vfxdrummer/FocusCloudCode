@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "Focus": {
+            "applicationId": "XPoFsoLDCNlJ7NzwYu10wn7jpNQ5SGAqbLXggVYE", 
+            "masterKey": "EQUttJXt72RQo8O92gGsQrLXsEcK7h2CyPPa9pcl"
+        }, 
+        "_default": {
+            "link": "Focus"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.3.5"
+    }
+}
