@@ -1,3 +1,8 @@
+var express = require('express');
+var app = express();
+
+// Global app configuration section.
+app.use(express.bodyParser());
 
 // Use Parse.Cloud.define to define as many cloud functions as you want.
 // For example:
@@ -23,14 +28,13 @@ Parse.Cloud.define("token", function(request, response) {
 });
 
 // default endpoint
-Parse.Cloud.define("", function(request, response) {
+Parse.Cloud.define("welcome", function(request, response) {
   var twilio = require('twilio');
   var resp = new twilio.TwimlResponse();
   resp.say('Welcome to Twilio!');
 
   // Render the TwiML XML document
-  response.type('text/xml');
-  response.send(resp.toString());
+  response.success(resp.toString());
 });
 
 // say hello
@@ -40,6 +44,5 @@ Parse.Cloud.define("helloTwiML", function(request, response) {
   resp.say('Hello!');
 
   // Render the TwiML XML document
-  response.type('text/xml');
-  response.send(resp.toString());
+  response.success(resp.toString());
 });
