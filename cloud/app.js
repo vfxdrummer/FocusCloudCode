@@ -46,6 +46,49 @@ app.post('/testing', function(req, res) {
     res.send(twiml.toString());
 });
 
+// Create a route that will respond to am HTTP GET request with some
+// simple TwiML instructions
+app.get('/call', function(req, res) {
+    var twilio = require('twilio');
+    // Create a TwiML response generator object
+    var twiml = new twilio.TwimlResponse();
+
+    // var from = req.param('from');
+    var to_var = req.body.to;
+    twiml.say('Welcome to Focus Driving, your call is starting', {
+        voice:'woman'
+      })
+    .dial( to_var.toString(), {callerId:'test'} );
+    
+    // Render the TwiML XML document
+    res.type('text/xml');
+    res.send(twiml.toString());
+});
+
+// Create a route that will respond to am HTTP GET request with some
+// simple TwiML instructions
+app.post('/call', function(req, res) {
+    var twilio = require('twilio');
+    // Create a TwiML response generator object
+    var twiml = new twilio.TwimlResponse();
+
+    var from_var = req.body.From;
+    var to_var = req.body.To;
+    twiml.say('Welcome to Focus Driving, your call is starting', {
+        voice:'woman'
+      })
+    // .dial( twiml.client(to_var.toString() ), {callerId:from_var.toString()});
+    .dial( {callerId:from_var.toString()}, function() {
+      this.client( to_var.toString() );
+    });
+    // .client( to_var.toString() );
+    // .dial( to_var.toString(), {callerId:'Tim'} );
+    
+    // Render the TwiML XML document
+    res.type('text/xml');
+    res.send(twiml.toString());
+});
+
 // // Example reading from the request query string of an HTTP get request.
 // app.get('/test', function(req, res) {
 //   // GET http://example.parseapp.com/test?message=hello

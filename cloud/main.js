@@ -16,9 +16,12 @@ Parse.Cloud.define("token", function(request, response) {
   var twilioAppSid = 'AP91929ec65ae9377af2c47cd245659c8a';
   var capability = new twilio.Capability(liveAccountSID, liveAuthToken);
 
+  var client = request.params.client
+
   //Create a capability token using the TwiML app with sid "AP123"
   capability.allowClientOutgoing(twilioAppSid);
-  // capability.allowClientIncoming('tim');
+  capability.allowClientIncoming(client);
+
   var token = capability.generate();
   response.success(token);
 });
