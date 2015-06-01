@@ -22,7 +22,7 @@ app.get('/testing', function(req, res) {
     var twiml = new twilio.TwimlResponse();
  
     // add some instructions
-    twiml.say('Hi Dave & Joe! Can you believe that we got this working??? Should be really cool when we put it in our Focus app! Thanks again for having me onboard the project, let\'s kicksome ass', {
+    twiml.say('Hello Focus, how\'s it going?', {
         voice:'woman'
     });
  
@@ -37,7 +37,7 @@ app.post('/testing', function(req, res) {
     var twiml = new twilio.TwimlResponse();
  
     // add some instructions
-    twiml.say('Hi Dave & Joe! Can you believe that we got this working??? Should be really cool when we put it in our Focus app! Thanks again for having me onboard the project, let\'s kicksome ass', {
+    twiml.say('Hello Focus, how\'s it going?', {
         voice:'woman'
     });
  
